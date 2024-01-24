@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .par {
+            width: 100%;
+            height: 100vh;
+            background-color: beige;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .choices {
+            height: 30vh;
+            width: 100%;
+            margin: 20px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .child2 {
+            height: 30vh;
+            width: 100%;
+            margin: 20px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .child3 {
+            height: 30vh;
+            width: 100%;
+            margin: 20px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .choice {
+            height: 120px;
+            width: 120px;
+            margin: 0px 20px;
+            background-color: white;
+            overflow: hidden;
+            border: none;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+        .rotate {
+            rotate: 270deg;
+            height: 120px;
+        }
+
+        .choice:hover {
+            border: 5px solid black;
+            transition: 0.3s;
+        }
+
+        .score {
+            height: 60px;
+            border: none;
+            font-size: 25px;
+            width: 100px;
+            background-color: rgb(61, 59, 59);
+            color: white;
+            text-align: center;
+        }
+
+        #msg {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="par">
+        <div class="choices">
+            <div class="choice" id="rock">
+                <img class="rotate" src="1111.png" alt="">
+            </div>
+            <div class="choice" id="paper">
+                <img class="rotate" src="22222.png" alt="">
+            </div>
+            <div class="choice" id="sicissor">
+                <img class="rotate" src="3333.png" alt="">
+            </div>
+        </div>
+        <div class="child2">
+            <div class="score">
+                <p id="userscore">0</p>
+                <p>you</p>
+            </div>
+            <div class="score">
+                <p id="compscore">0</p>
+                <p> comp</p>
+            </div>
+        </div>
+        <div class="child3">
+            <p id="msg">play</p>
+        </div>
+    </div>
+    <script>
+        let userscore = 0;
+        let compscore = 0;
+
+        const choices = document.querySelectorAll(".choice");
+
+        const playgame = (choiceId) => {
+            const compchoice = gencompchoise();
+            console.log("user choice", choiceId);
+            console.log(compchoice);
+        }
+        const gencompchoise = () => {
+            let option = ["rock", "paper", "sicssor"];
+            const random = Math.floor(Math.random() * 3);
+            return option[random];
+        }
+        choices.forEach((choice) => {
+            choice.addEventListener("click", () => {
+                const choiceId = choice.getAttribute("id");
+                playgame(choiceId)
+            });
+        });
+    </script>
+</body>
+
+</html>
